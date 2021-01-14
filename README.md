@@ -16,6 +16,7 @@ In order to start the game
 Running the tests
 ```bash
 ?- load_test_files('checkers_ai').
+?- run_tests.
 ```
 Visit [Prolog Unit Tests](https://www.swi-prolog.org/pldoc/doc_for?object=section(%27packages/plunit.html%27)) for more info about unit tests in Prolog.
 
