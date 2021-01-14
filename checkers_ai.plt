@@ -1,5 +1,5 @@
-:- begin_tests(iaib200582).
-:- include('200582').
+:- begin_tests(checkers_ai).
+:- include('checkers_ai').
 
 test(board_snapshot, [cleanup(abolish(ruut/3))]):-
 	init_squares,
@@ -1137,5 +1137,5 @@ test_case_2:-
 	assert(ruut(5,5,2)),
 	assert(ruut(5,7,2)).
 
-:- end_tests(iaib200582).
+:- end_tests(checkers_ai).
 

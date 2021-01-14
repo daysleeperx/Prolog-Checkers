@@ -1,14 +1,14 @@
-:- module(iaib200582, [iaib200582/3]).
+:- module(computer_strategy, [computer_strategy/3]).
 
 debug_mode(false).
 
-iaib200582(Color,X,Y):-
+computer_strategy(Color,X,Y):-
     color(Color,Player),
     board_snapshot(Board),
     choose_move(Board,Player,X,Y,0,Move),!,
     play_move(Move).
 
-iaib200582(_,_,_).
+computer_strategy(_,_,_).
 
 opponent(white, black).
 opponent(black, white).
@@ -21,13 +21,11 @@ color(2,black).
 
 choose_move(Board,Player,0,0,Depth,Move):-
     get_all_moves(Board,Player,Moves),
-    % best(Player,Player,Moves,Move,_,Depth),!.
-    bounded_best(Player,Player,-1000,1000,Moves,Move,_,Depth),!.
+    best(Player,Player,Moves,Move,_,Depth),!.
 
 choose_move(Board,Player,X,Y,Depth,Move):-
     findall(Move,(dir(Player,Dir),chain_capture(Board,X,Y,Dir,Move),Move \= []),Moves),
-    % best(Player,Player,Moves,Move,_,Depth),!.
-    bounded_best(Player,Player,-1000,1000,Moves,Move,_,Depth),!.
+    best(Player,Player,Moves,Move,_,Depth),!.
 
 play_move(m(X,Y,X1,Y1,_)):- make_move(X,Y,X1,Y1).
 play_move([c(X,Y,X1,Y1,X2,Y2,_)|_]):- make_capture(X,Y,X1,Y1,X2,Y2).
@@ -312,7 +310,7 @@ new_bounds(Player,CurrentPlayer,Alpha,Beta,Score,Alpha,Score):-
 new_bounds(_,_,Alpha,Beta,_,Alpha,Beta).
 
 minimax(Board,Player,CurrentPlayer,NextMove,Score,Depth):-
-    Depth < 5,
+    Depth < 4,
     D is Depth + 1,
     get_all_moves(Board,CurrentPlayer,Moves),
     best(Player,CurrentPlayer,Moves,NextMove,Score,D),!.
