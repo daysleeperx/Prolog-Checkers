@@ -19,4 +19,4 @@ Running the tests
 ```
 Visit [Prolog Unit Tests](https://www.swi-prolog.org/pldoc/doc_for?object=section(%27packages/plunit.html%27)) for more info about unit tests in Prolog.
 
-Prolog <3 
+Prolog :heart: 
